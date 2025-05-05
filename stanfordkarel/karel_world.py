@@ -94,6 +94,8 @@ class KarelWorld:
         # Map of corner colors, defaults to ""
         self.corner_colors: dict[tuple[int, int], str] = {}
 
+       xf self.spikes: set[tuple[int, int]] = set()
+
         # Set of Wall objects placed in the world
         self.walls: set[Wall] = set()
 
@@ -283,6 +285,11 @@ class KarelWorld:
                 elif keyword == "color":
                     # Set corner color to be specified color
                     self.corner_colors[params["location"]] = params["color"]
+
+              elif keyword == "spike":
+    # Add spike location
+    self.spikes.add(params["location"])
+
 
                 else:
                     print(f"Invalid keyword - ignoring line {i} of world file: {line}")
